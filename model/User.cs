@@ -33,6 +33,7 @@ namespace _1651Assignment.model
         public void getNotification(String message, chatMediator chatRoom)
         {
             // TODO
+            Console.WriteLine("User: " + Name + " received notification: " + message + " from chat room: " + chatRoom.Name);
         }
 
         public void leaveRoom(ChatRoom chatRoom)

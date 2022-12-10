@@ -36,6 +36,7 @@ namespace _1651Assignment.model
         public void addMessage(String message, User user)
         {
             Messages.Add(new Message {message = message, user = user, time = DateTime.Now});
+            notifyAll(message, user);
         }
 
         
@@ -71,12 +72,37 @@ namespace _1651Assignment.model
 
         public override string ToString()
         {
-            return "ChatRoom{" +
-                    "Name='" + Name + '\'' +
-                    ", Users=" + Users +
-                    ", Messages=" + Messages +
-                    ", Admins=" + Admins +
-                    '}';
+            // return "ChatRoom{" +
+            //         "Name='" + Name + '\'' +
+            //         ", Users=" + Users +
+            //         ", Messages=" + Messages +
+            //         ", Admins=" + Admins +
+            //         '}';
+
+            String result = "ChatRoom{" +
+                            "Name='" + Name + '\'' +
+                            "\n Users=";
+            foreach (User u in Users)
+            {
+                result += u.Name + ", ";
+            }
+            result += "\n Messages=";
+            foreach (Message m in Messages)
+            {
+                result += m + ", ";
+            }
+            result += "\n Admins=";
+            foreach (User u in Admins)
+            {
+                result += u.Name + ", ";
+            }
+            result += '}';
+            return result;
+        }
+
+        public String getName()
+        {
+            return Name;
         }
 
         protected virtual void Dispose(bool disposing)
