@@ -8,11 +8,7 @@ namespace _1651Assignment.controller
 {
     public class AdminFuncs
     {
-        // add a user to a chat room
-        public static void addMember(User user, ChatRoom chatRoom)
-        {
-            // TODO
-            
-        }
+        // delete a room
+        
     }
 }

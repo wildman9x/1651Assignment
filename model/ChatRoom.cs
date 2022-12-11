@@ -11,9 +11,9 @@ namespace _1651Assignment.model
 
         public String ID { get; set; }
         public String Name { get; set; }
-        public List<User> Users { get; set; }
-        public List<Message> Messages { get; set; }
-        public List<User> Admins { get; set; }
+        private List<User> Users { get; set; }
+        private List<Message> Messages { get; set; }
+        private List<User> Admins { get; set; }
 
         public ChatRoom(String name)
         {
@@ -39,7 +39,74 @@ namespace _1651Assignment.model
             notifyAll(message, user);
         }
 
-        
+        public void showAdmins()
+        {
+            foreach (User u in Admins)
+            {
+                Console.WriteLine(u);
+            }
+        }
+
+        public void showUsers()
+        {
+            foreach (User u in Users)
+            {
+                Console.WriteLine(u);
+            }
+        }
+
+        public void deleteRoom()
+        {
+            // TODO
+            foreach (User u in new List<User>(Users))
+            {
+                u.leaveRoom(this);
+            }
+            foreach (User u in new List<User>(Admins))
+            {
+                u.leaveRoom(this);
+            }
+            foreach (Message m in new List<Message>(Messages))
+            {
+                deleteMessage(m);
+            }
+            this.Dispose();
+        }
+
+        public void deleteMessage(Message message)
+        {
+            Messages.Remove(message);
+        }
+
+        public void removeUser(User user)
+        {
+            Users.Remove(user);
+        }
+
+        public void addUser(User user)
+        {
+            Users.Add(user);
+        }
+
+        public void addAdmin(User user)
+        {
+            Admins.Add(user);
+        }
+
+        public void removeAdmin(User user)
+        {
+            Admins.Remove(user);
+        }
+
+        public bool containAdmin(User user)
+        {
+            return Admins.Contains(user);
+        }
+
+        public bool containUser(User user)
+        {
+            return Users.Contains(user);
+        }
 
         public void messageSearch(String message)
         {

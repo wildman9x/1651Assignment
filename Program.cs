@@ -40,15 +40,36 @@ namespace _1651Assignment
             // add 3 users to the chat room
             for (int i = 0; i < 3; i++)
             {
-                chatRoom.Users.Add(usersList[i+1]);
+                userToCreate.addUser(chatRoom, usersList[i]);
             }
             // toString() method of ChatRoom class will display all users in the chat room
             // Console.WriteLine(chatRoom);
             
             // user with phone number 1234567890 send a message to the chat room
             userToCreate.sendMessage("Hello World!", chatRoom);
+            usersList[1].sendMessage("Hello " + usersList[0].Name, chatRoom);
             // toString() method of ChatRoom class will display all messages in the chat room
-            // chatRoom.displayMessages();
+            Console.WriteLine("chatRoom messages: ");
+            chatRoom.displayMessages();
+
+            Console.WriteLine("chatRoom users: ");
+            chatRoom.showUsers();
+            // user with phone number 1234567890 remove user with phone number 0987654321 from the chat room and display all users in the chat room
+            userToCreate.removeUser(chatRoom, usersList[1]);
+            Console.WriteLine("chatRoom users: ");
+            chatRoom.showUsers();
+            chatRoom.showAdmins();
+            // first admin of the chat room remove the chat room
+            try
+            {
+                userToCreate.deleteRoom(chatRoom);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(chatRoom);
+            }
+            Console.WriteLine(chatRoom);
         }
     }
 }
