@@ -18,6 +18,7 @@ namespace _1651Assignment.model
         public ChatRoom(String name)
         {
             Name = name;
+            ID = Guid.NewGuid().ToString();
             Users = new List<User>();
             Messages = new List<Message>();
             Admins = new List<User>();
@@ -26,17 +27,20 @@ namespace _1651Assignment.model
         public ChatRoom(String name, User user)
         {
             Name = name;
+            ID = Guid.NewGuid().ToString();
             Users = new List<User>();
             Messages = new List<Message>();
             Admins = new List<User>();
             Users.Add(user);
             Admins.Add(user);
+            user.addChat(this);
         }
 
         public void addMessage(String message, User user)
         {
-            Messages.Add(new Message {message = message, user = user, time = DateTime.Now});
-            notifyAll(message, user);
+            Message m = new Message(message, user);
+            Messages.Add(m);
+            notifyAll(m);
         }
 
         public void showAdmins()
@@ -78,16 +82,22 @@ namespace _1651Assignment.model
             Messages.Remove(message);
         }
 
-        public void removeUser(User user)
+        public void removeUser(User userWhoRemove, User userToRemove)
         {
-            Users.Remove(user);
+            Users.Remove(userToRemove);
         }
 
-        public void addUser(User user)
+        public void addUser(User userWhoAdded, User userToAdd)
         {
-            Users.Add(user);
+            if (Admins.Contains(userWhoAdded))
+            {
+                Users.Add(userToAdd);
+            }
+            else
+            {
+                Console.WriteLine("You are not an admin");
+            }
         }
-
         public void addAdmin(User user)
         {
             Admins.Add(user);
@@ -120,7 +130,7 @@ namespace _1651Assignment.model
             }
         }
 
-        public void notifyAll(String message, User user)
+        public void notifyAll(Message message)
         {
             foreach (User u in Users)
             {
@@ -179,6 +189,7 @@ namespace _1651Assignment.model
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects)
+
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer

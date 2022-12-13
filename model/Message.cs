@@ -11,6 +11,13 @@ namespace _1651Assignment.model
         public User user { get; set; }
         public DateTime time { get; set; }
 
+        public Message(String message, User user)
+        {
+            this.message = message;
+            this.user = user;
+            time = DateTime.Now;
+        }
+
         public override string ToString()
         {
             // display user, time, message

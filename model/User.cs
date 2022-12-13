@@ -10,7 +10,7 @@ namespace _1651Assignment.model
         public String Name { get; set; }
         public String Phone { get; set; }
         // private password
-        private String Password { get; set; }
+        private String Password;
         public List<chatMediator> Chats { get; set; }
 
         public User(String name, String phone, String password)
@@ -18,6 +18,7 @@ namespace _1651Assignment.model
             Name = name;
             Phone = phone;
             Password = password;
+            Chats = new List<chatMediator>();
         }
 
         public bool checkPassword(String password)
@@ -25,20 +26,30 @@ namespace _1651Assignment.model
             return Password.Equals(password);
         }
 
+        // add chat
+        public void addChat(chatMediator chat)
+        {
+            Chats.Add(chat);
+        }
+
         public void sendMessage(String message, chatMediator chatRoom)
         {
             chatRoom.addMessage(message, this);
         }
 
-        public void getNotification(String message, chatMediator chatRoom)
+        public void getNotification(Message message, chatMediator chat)
         {
             // TODO
-            Console.WriteLine("User: " + Name + " \n received notification: " + message + "\n from chat room: " + chatRoom.Name + "\n");
+            Console.WriteLine("User: " + Name + 
+            " \n received message: " + message.message + 
+            (chat is ChatRoom ? " \n from chat room: " + chat.Name : "") +
+            "\n from user: " + message.user.Name +
+            "\n");
         }
 
         public void leaveRoom(ChatRoom chatRoom)
         {
-            chatRoom.removeUser(this);
+            chatRoom.removeUser(this, this);
             if (isAdmin(chatRoom))
             {
                 chatRoom.removeAdmin(this);
@@ -70,11 +81,13 @@ namespace _1651Assignment.model
         {
             if (isAdmin(chatRoom) && !isUserInRoom(chatRoom, user))
             {
-                chatRoom.addUser(user);
-            } else if (!isAdmin(chatRoom))
+                chatRoom.addUser(this, user);
+            }
+            else if (!isAdmin(chatRoom))
             {
                 Console.WriteLine("You are not an admin of this chat room");
-            } else if (isUserInRoom(chatRoom, user))
+            }
+            else if (isUserInRoom(chatRoom, user))
             {
                 Console.WriteLine("User is already in this chat room");
             }
@@ -84,7 +97,7 @@ namespace _1651Assignment.model
         {
             if (isAdmin(chatRoom))
             {
-                chatRoom.removeUser(user);
+                chatRoom.removeUser(this, user);
             }
         }
 
@@ -118,6 +131,47 @@ namespace _1651Assignment.model
                     "Name='" + Name + '\'' +
                     ", Phone='" + Phone + '\'' +
                     '}';
+        }
+
+        // find chatOne with another user
+        public chatMediator? findChatOne(User user)
+        {
+            if (user == this || user == null || Chats == null)
+            {
+                return null;
+            }
+            foreach (chatMediator chat in Chats)
+            {
+                if (chat is ChatOne)
+                {
+                    if (((ChatOne) chat).containUser(user))
+                    {
+                        return chat;
+                    }
+                }
+            }
+            return null;
+        }
+
+        // send chatOne message to another user, if there is no chatOne with that user, create one
+        public void sendChatOneMessage(String message, User user)
+        {
+            chatMediator? chat = findChatOne(user);
+            if (!(chat != null))
+            {
+                try
+                {
+                    ChatOne chatOne = new ChatOne(this, user);
+                    chat = chatOne;
+                    Chats.Add(chat);
+                    
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            chat.addMessage(message, this);
         }
     }
 }

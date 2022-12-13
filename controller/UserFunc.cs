@@ -26,7 +26,7 @@ namespace _1651Assignment.controller
         }
         
         // find a user by phone number
-        public static User findUser(String phone, List<User> usersList)
+        public static User? findUser(String phone, List<User> usersList)
         {
             foreach (User user in usersList)
             {
@@ -36,6 +36,42 @@ namespace _1651Assignment.controller
                 }
             }
             return null;
+        }
+
+        // display all users
+        public static void displayUsers(List<User> usersList)
+        {
+            foreach (User user in usersList)
+            {
+                Console.WriteLine(user);
+            }
+        }
+
+        // add multiple users to a chat room
+        public static void addUsersToChatRoom(User user, ChatRoom chatRoom, List<User> usersList)
+        {
+            foreach (User u in usersList)
+            {
+                user.addUser(chatRoom, u);
+            }
+        }
+
+        // display all chats of a user
+        public static void displayUserChats(User user)
+        {
+            try
+            {
+                foreach (chatMediator chat in user.Chats)
+                {
+                    Console.WriteLine(chat);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw new System.Exception("User has no chats");
+            }
+            
         }
     }
 }
