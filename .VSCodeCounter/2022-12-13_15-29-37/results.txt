@@ -1,0 +1,56 @@
+Date : 2022-12-13 15:29:37
+Directory : d:\Class\1651\1651Assignment
+Total : 21 files,  792 codes, 76 comments, 92 blanks, all 960 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| C#         |         13 |        596 |         76 |         88 |        760 |
+| JSON       |          4 |        159 |          0 |          0 |        159 |
+| XML        |          3 |         26 |          0 |          3 |         29 |
+| Properties |          1 |         11 |          0 |          1 |         12 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |         21 |        792 |         76 |         92 |        960 |
+| bin                                                                                                    |          2 |         32 |          0 |          0 |         32 |
+| bin\Debug                                                                                              |          2 |         32 |          0 |          0 |         32 |
+| bin\Debug\net6.0                                                                                       |          2 |         32 |          0 |          0 |         32 |
+| controller                                                                                             |          3 |         79 |          9 |          7 |         95 |
+| model                                                                                                  |          6 |        449 |         44 |         70 |        563 |
+| obj                                                                                                    |          8 |        174 |         11 |          8 |        193 |
+| obj\Debug                                                                                              |          4 |         30 |         11 |          8 |         49 |
+| obj\Debug\net6.0                                                                                       |          4 |         30 |         11 |          8 |         49 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                               | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\Class\1651\1651Assignment\1651Assignment.csproj                                                     | XML        |          9 |          0 |          3 |         12 |
+| d:\Class\1651\1651Assignment\Program.cs                                                                | C#         |         49 |         12 |          4 |         65 |
+| d:\Class\1651\1651Assignment\bin\Debug\net6.0\1651Assignment.deps.json                                 | JSON       |         23 |          0 |          0 |         23 |
+| d:\Class\1651\1651Assignment\bin\Debug\net6.0\1651Assignment.runtimeconfig.json                        | JSON       |          9 |          0 |          0 |          9 |
+| d:\Class\1651\1651Assignment\controller\AdminFuncs.cs                                                  | C#         |         11 |          1 |          2 |         14 |
+| d:\Class\1651\1651Assignment\controller\MiscFuncs.cs                                                   | C#         |         20 |          1 |          1 |         22 |
+| d:\Class\1651\1651Assignment\controller\UserFunc.cs                                                    | C#         |         48 |          7 |          4 |         59 |
+| d:\Class\1651\1651Assignment\model\Admin.cs                                                            | C#         |         13 |          0 |          3 |         16 |
+| d:\Class\1651\1651Assignment\model\ChatOne.cs                                                          | C#         |         96 |         16 |         18 |        130 |
+| d:\Class\1651\1651Assignment\model\ChatRoom.cs                                                         | C#         |        168 |         18 |         26 |        212 |
+| d:\Class\1651\1651Assignment\model\Message.cs                                                          | C#         |         25 |          1 |          3 |         29 |
+| d:\Class\1651\1651Assignment\model\User.cs                                                             | C#         |        131 |          9 |         17 |        157 |
+| d:\Class\1651\1651Assignment\model\chatMediator.cs                                                     | C#         |         16 |          0 |          3 |         19 |
+| d:\Class\1651\1651Assignment\obj\1651Assignment.csproj.nuget.dgspec.json                               | JSON       |         61 |          0 |          0 |         61 |
+| d:\Class\1651\1651Assignment\obj\1651Assignment.csproj.nuget.g.props                                   | XML        |         15 |          0 |          0 |         15 |
+| d:\Class\1651\1651Assignment\obj\1651Assignment.csproj.nuget.g.targets                                 | XML        |          2 |          0 |          0 |          2 |
+| d:\Class\1651\1651Assignment\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs           | C#         |          3 |          1 |          1 |          5 |
+| d:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.AssemblyInfo.cs                           | C#         |          9 |          9 |          5 |         23 |
+| d:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.GeneratedMSBuildEditorConfig.editorconfig | Properties |         11 |          0 |          1 |         12 |
+| d:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.GlobalUsings.g.cs                         | C#         |          7 |          1 |          1 |          9 |
+| d:\Class\1651\1651Assignment\obj\project.assets.json                                                   | JSON       |         66 |          0 |          0 |         66 |
+| Total                                                                                                  |            |        792 |         76 |         92 |        960 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
