@@ -11,7 +11,7 @@ namespace _1651Assignment.model
         public String Phone { get; set; }
         // private password
         private String Password { get; set; }
-        public List<ChatRoom> chatRooms { get; set; }
+        public List<chatMediator> Chats { get; set; }
 
         public User(String name, String phone, String password)
         {
@@ -97,7 +97,7 @@ namespace _1651Assignment.model
         public void createRoom(String name)
         {
             ChatRoom chatRoom = new ChatRoom(name, this);
-            chatRooms.Add(chatRoom);
+            Chats.Add(chatRoom);
             // chatRoom.addUser(this);
             // chatRoom.addAdmin(this);
         }
