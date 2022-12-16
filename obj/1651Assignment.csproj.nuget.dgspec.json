@@ -38,9 +38,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.18.0, )"
+            },
+            "dotenv.net": {
+              "target": "Package",
+              "version": "[3.1.2, )"
             }
           },
           "imports": [

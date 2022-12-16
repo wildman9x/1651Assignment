@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using _1651Assignment.controller;
 using _1651Assignment.model;
+using _1651Assignment.DataAccess;
 
 namespace _1651Assignment
 {
@@ -76,6 +77,12 @@ namespace _1651Assignment
             // display all chats of user[0]
             Console.WriteLine("User " + usersList[0] + " chats: ");
             UserFunc.displayUserChats(usersList[0]);
+
+            // Console.WriteLine(DataAccess.getConnectionKey());
+            // DataAccess.DataAccess.getConnectionKey();
+
+            DataAccess.DataAccess.createUser(userToCreate);
+            DataAccess.DataAccess.getAllUsers<User>();
         }
     }
 }
