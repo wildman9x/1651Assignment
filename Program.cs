@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using _1651Assignment.controller;
 using _1651Assignment.model;
 using _1651Assignment.DataAccess;
+using MongoDB.Driver;
 
 namespace _1651Assignment
 {
@@ -81,8 +82,45 @@ namespace _1651Assignment
             // Console.WriteLine(DataAccess.getConnectionKey());
             // DataAccess.DataAccess.getConnectionKey();
 
-            DataAccess.DataAccess.createUser(userToCreate);
-            DataAccess.DataAccess.getAllUsers<User>();
+            MainAsync().Wait();
+        }
+
+        static async Task MainAsync() {
+            DataAccess.DataAccess db = new DataAccess.DataAccess();
+            try {
+                await db.createUser(new User() {Name = "John Cena", Phone = "123456789", Password = "password"});
+                await db.createUser(new User() {Name = "Joseph", Phone = "098765432", Password = "password"});
+                await db.createUser(new User() {Name = "User 1", Phone = MiscFuncs.randomStringDigit(10), Password = "password"});
+                await db.createUser(new User() {Name = "User 2", Phone = MiscFuncs.randomStringDigit(10), Password = "password"});
+                await db.createUser(new User() {Name = "User 3", Phone = MiscFuncs.randomStringDigit(10), Password = "password"});
+                await db.createUser(new User() {Name = "User 4", Phone = MiscFuncs.randomStringDigit(10), Password = "password"});
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+            // Console.WriteLine(db.findUser("123456789"));
+            var users = await db.getAllUsers();
+            foreach (var user in users)
+            {
+                Console.WriteLine(user);
+            }
+            try {
+            // create a new chat room with John Cena as the admin
+            ChatRoom chatRoom = new ChatRoom("Chat Room 1", await db.getUser("123456789"));
+            await db.createChatRoom(chatRoom);
+            // add 3 users to the chat room
+            List<User> usersToAdd = new List<User>();
+            usersToAdd.Add(await db.getUser("098765432"));
+            usersToAdd.Add(await db.getUser("2118301106"));
+            usersToAdd.Add(await db.getUser("0774808041"));
+            await db.addUsersToChatRoom(chatRoom, usersToAdd);
+            // await db.addUsersToChatRoom(chatRoom, new List<User>() {await db.getAllUsers().Result[1], await db.getAllUsers().Result[2], await db.getAllUsers().Result[3]});
+            // toString() method of ChatRoom class will display all users in the chat room
+            Console.WriteLine(chatRoom);
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

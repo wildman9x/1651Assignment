@@ -12,9 +12,6 @@ namespace _1651Assignment.DataAccess
     {
         public static string getEnv(string key)
         {
-            // DotEnv.Load(options: new DotEnvOptions ( envFilePaths: new[] { "D:/Class/1651/1651Assignment/DataAccess/.env" } ));
-            // var envVars = DotEnv.Read();
-            // return envVars[key];
             DotNetEnv.Env.Load();
             return DotNetEnv.Env.GetString(key);
         }
@@ -46,15 +43,63 @@ namespace _1651Assignment.DataAccess
             return list;
         }
 
-        public static async Task<List<T>> getAllUsers<T>()
+        public async Task<List<User>> getAllUsers()
         {
-            var collection = getCollection<T>(userCollection);
-            var list = await collection.Find(_ => true).ToListAsync();
-            return list;
+            var collection = getCollection<User>(userCollection);
+            var list = await collection.FindAsync(_ => true);
+            return list.ToList();
         }
 
-        public static Task createUser(User user)
+        // find user in the database with a phone number
+        public async Task<bool> checkUser(String phone)
         {
+            var collection = getCollection<User>(userCollection);
+            bool result = await collection.Find(user => user.Phone == phone).AnyAsync();
+            return result;
+        }
+
+        // find user in the database with a phone number and return the user
+        public async Task<User> getUser(String phone)
+        {
+            var collection = getCollection<User>(userCollection);
+            var result = await collection.Find(user => user.Phone == phone).FirstOrDefaultAsync();
+            return result;
+        }
+
+        // add user to a chat room
+        public async Task addUserToChatRoom(User user, ChatRoom chatRoom)
+        {
+            var collection = getCollection<ChatRoom>(chatRoomCollection);
+            var filter = Builders<ChatRoom>.Filter.Eq("Name", chatRoom.Name);
+            var update = Builders<ChatRoom>.Update.Push("Users", user);
+            await collection.UpdateOneAsync(filter, update);
+        }
+
+        // create a new chat room
+        public async Task createChatRoom(ChatRoom chatRoom)
+        {
+            var collection = getCollection<ChatRoom>(chatRoomCollection);
+            await collection.InsertOneAsync(chatRoom);
+        }
+
+        // add multiple users into a chat room
+        public async Task addUsersToChatRoom(ChatRoom chatRoom, List<User> users)
+        {
+            var collection = getCollection<ChatRoom>(chatRoomCollection);
+            var filter = Builders<ChatRoom>.Filter.Eq("Name", chatRoom.Name);
+            var update = Builders<ChatRoom>.Update.PushEach("Users", users);
+            await collection.UpdateOneAsync(filter, update);
+        }
+
+        public Task? createUser(User user)
+        {
+            // if the phone number is already in the database, return false
+            if (checkUser(user.Phone).Result)
+            {
+                Console.WriteLine("Phone number is already in use");
+                return null;
+            }
+
             var collection = getCollection<User>(userCollection);
             return collection.InsertOneAsync(user);
         }

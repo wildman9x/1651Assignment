@@ -14,7 +14,11 @@ namespace _1651Assignment.controller
             // check if phone number is already in use
             if (findUser(phone, usersList) == null)
             {
-                User user = new User(name, phone, password);
+                User user = new User();
+                user.Name = name;
+                user.Phone = phone;
+                user.Password = password;
+                user.Chats = new List<ObjectId>();
                 usersList.Add(user);
             }
             else
@@ -61,7 +65,7 @@ namespace _1651Assignment.controller
         {
             try
             {
-                foreach (chatMediator chat in user.Chats)
+                foreach (ObjectId chat in user.Chats)
                 {
                     Console.WriteLine(chat);
                 }

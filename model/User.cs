@@ -12,19 +12,25 @@ namespace _1651Assignment.model
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        public String Name { get; set; }
-        public String Phone { get; set; }
+        public String Name { get; set; } = "";
+        public String Phone { get; set; } = "";
         // private password
-        private String Password;
-        public List<chatMediator> Chats { get; set; }
+        public String Password {get; set;} = "";
+        public List<ObjectId> Chats { get; set; } = new List<ObjectId>();
 
-        public User(String name, String phone, String password)
-        {
-            Name = name;
-            Phone = phone;
-            Password = password;
-            Chats = new List<chatMediator>();
-        }
+        // public User()
+        // {
+        //     Chats = new List<chatMediator>();
+        // }
+
+        // public User(String name, String phone, String password)
+        // {
+
+        //     Name = name;
+        //     Phone = phone;
+        //     Password = password;
+        //     Chats = new List<chatMediator>();
+        // }
 
         public bool checkPassword(String password)
         {
@@ -32,17 +38,17 @@ namespace _1651Assignment.model
         }
 
         // add chat
-        public void addChat(chatMediator chat)
+        public void addChat(ObjectId chat)
         {
             Chats.Add(chat);
         }
 
-        public void sendMessage(String message, chatMediator chatRoom)
+        public void sendMessage(String message, ObjectId chatRoom)
         {
             chatRoom.addMessage(message, this);
         }
 
-        public void getNotification(Message message, chatMediator chat)
+        public void getNotification(Message message, ObjectId chat)
         {
             // TODO
             Console.WriteLine("User: " + Name + 
@@ -139,13 +145,13 @@ namespace _1651Assignment.model
         }
 
         // find chatOne with another user
-        public chatMediator? findChatOne(User user)
+        public ObjectId? findChatOne(User user)
         {
             if (user == this || user == null || Chats == null)
             {
                 return null;
             }
-            foreach (chatMediator chat in Chats)
+            foreach (ObjectId chat in Chats)
             {
                 if (chat is ChatOne)
                 {
@@ -161,7 +167,9 @@ namespace _1651Assignment.model
         // send chatOne message to another user, if there is no chatOne with that user, create one
         public void sendChatOneMessage(String message, User user)
         {
-            chatMediator? chat = findChatOne(user);
+            ObjectId? chat = findChatOne(user);
+            // if Chats is null, create a new list
+            
             if (!(chat != null))
             {
                 try

@@ -2,41 +2,44 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 namespace _1651Assignment.model
 {
-    public class ChatRoom : chatMediator, IDisposable
+    public class ChatRoom : ObjectId, IDisposable
     {
         private bool disposedValue;
 
-        public String ID { get; set; }
-        public String Name { get; set; }
-        private List<User> Users { get; set; }
-        private List<Message> Messages { get; set; }
-        private List<User> Admins { get; set; }
+        // [BsonId]
+        // [BsonRepresentation(BsonType.ObjectId)]
+        // public String Id { get; set; }
+        // public String Name { get; set; }
+        // public List<User> Users { get; set; }
+        // public List<Message> Messages { get; set; }
+        public List<User> Admins { get; set; } = new List<User>();
 
         public ChatRoom(String name)
         {
             Name = name;
-            ID = Guid.NewGuid().ToString();
-            Users = new List<User>();
-            Messages = new List<Message>();
-            Admins = new List<User>();
+            // Id = Guid.NewGuid().ToString();
+            // Users = new List<User>();
+            // Messages = new List<Message>();
+            // Admins = new List<User>();
         }
 
         public ChatRoom(String name, User user)
         {
             Name = name;
-            ID = Guid.NewGuid().ToString();
-            Users = new List<User>();
-            Messages = new List<Message>();
-            Admins = new List<User>();
+            // Id = Guid.NewGuid().ToString();
+            // Users = new List<User>();
+            // Messages = new List<Message>();
+            // Admins = new List<User>();
             Users.Add(user);
             Admins.Add(user);
             user.addChat(this);
         }
 
-        public void addMessage(String message, User user)
+        public override void addMessage(String message, User user)
         {
             Message m = new Message(message, user);
             Messages.Add(m);
@@ -82,12 +85,12 @@ namespace _1651Assignment.model
             Messages.Remove(message);
         }
 
-        public void removeUser(User userWhoRemove, User userToRemove)
+        public override void removeUser(User userWhoRemove, User userToRemove)
         {
             Users.Remove(userToRemove);
         }
 
-        public void addUser(User userWhoAdded, User userToAdd)
+        public override void addUser(User userWhoAdded, User userToAdd)
         {
             if (Admins.Contains(userWhoAdded))
             {
@@ -130,7 +133,7 @@ namespace _1651Assignment.model
             }
         }
 
-        public void notifyAll(Message message)
+        public override void notifyAll(Message message)
         {
             foreach (User u in Users)
             {
@@ -138,7 +141,7 @@ namespace _1651Assignment.model
             }
         }
 
-        public void displayMessages()
+        public override void displayMessages()
         {
             foreach (Message m in Messages)
             {

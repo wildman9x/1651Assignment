@@ -5,33 +5,33 @@ using System.Threading.Tasks;
 
 namespace _1651Assignment.model
 {
-    public class ChatOne : chatMediator, IDisposable
+    public class ChatOne : ObjectId, IDisposable
     {
         private bool disposedValue;
 
-        public string Name { get ; set ; }
+        // public string Name { get ; set ; }
 
-        private List<User> Users { get; set; }
+        // public List<User> Users { get; set; }
 
-        private List<Message> Messages { get; set; }
+        // public List<Message> Messages { get; set; }
 
         public ChatOne(User user1, User user2)
         {
-            Users = new List<User>();
+            // Users = new List<User>();
             Users.Add(user1);
             Users.Add(user2);
             Name = user1.Name + " and " + user2.Name;
-            Messages = new List<Message>();
+            // Messages = new List<Message>();
         }
 
-        public void addMessage(string message, User user)
+        public override void addMessage(string message, User user)
         {
             Message m = new Message(message, user);
             Messages.Add(m);
             notifyAll(m);
         }
 
-        public void addUser(User userWhoAdded, User userToAdd)
+        public override void addUser(User userWhoAdded, User userToAdd)
         {
             // create a new chat room
             // room name is all the user in this chat and the userToAdd
@@ -51,12 +51,12 @@ namespace _1651Assignment.model
             return roomName;
         }
 
-        public void displayMessages()
+        public override void displayMessages()
         {
             throw new NotImplementedException();
         }
 
-        public void notifyAll(Message message)
+        public override void notifyAll(Message message)
         {
             foreach (User u in Users)
             {
@@ -64,7 +64,7 @@ namespace _1651Assignment.model
             }
         }
 
-        public void removeUser(User userWhoRemove, User userToRemove)
+        public override void removeUser(User userWhoRemove, User userToRemove)
         {
             // if the userToRemove is not userWhoRemove then return
             if (userToRemove != userWhoRemove)
