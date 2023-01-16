@@ -16,7 +16,7 @@ namespace _1651Assignment.model
         public String Phone { get; set; } = "";
         // private password
         public String Password {get; set;} = "";
-        public List<ObjectId> Chats { get; set; } = new List<ObjectId>();
+        public List<ChatMediator> Chats { get; set; } = new List<ChatMediator>();
 
         // public User()
         // {
@@ -38,17 +38,17 @@ namespace _1651Assignment.model
         }
 
         // add chat
-        public void addChat(ObjectId chat)
+        public void addChat(ChatMediator chat)
         {
             Chats.Add(chat);
         }
 
-        public void sendMessage(String message, ObjectId chatRoom)
+        public void sendMessage(String message, ChatMediator chatRoom)
         {
             chatRoom.addMessage(message, this);
         }
 
-        public void getNotification(Message message, ObjectId chat)
+        public void getNotification(Message message, ChatMediator chat)
         {
             // TODO
             Console.WriteLine("User: " + Name + 
@@ -145,13 +145,13 @@ namespace _1651Assignment.model
         }
 
         // find chatOne with another user
-        public ObjectId? findChatOne(User user)
+        public ChatMediator? findChatOne(User user)
         {
             if (user == this || user == null || Chats == null)
             {
                 return null;
             }
-            foreach (ObjectId chat in Chats)
+            foreach (ChatMediator chat in Chats)
             {
                 if (chat is ChatOne)
                 {
@@ -167,7 +167,7 @@ namespace _1651Assignment.model
         // send chatOne message to another user, if there is no chatOne with that user, create one
         public void sendChatOneMessage(String message, User user)
         {
-            ObjectId? chat = findChatOne(user);
+            ChatMediator? chat = findChatOne(user);
             // if Chats is null, create a new list
             
             if (!(chat != null))

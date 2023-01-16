@@ -6,11 +6,9 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 namespace _1651Assignment.model
 {
-    public abstract class ObjectId
+    public abstract class ChatMediator
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public List<User> Users { get; set; } = new List<User>();
 
         public List<Message> Messages { get; set; } = new List<Message>();

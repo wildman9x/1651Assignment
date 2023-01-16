@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace _1651Assignment.model
 {
-    public class ChatOne : ObjectId, IDisposable
+    public class ChatOne : ChatMediator, IDisposable
     {
         private bool disposedValue;
 
@@ -26,7 +26,7 @@ namespace _1651Assignment.model
 
         public override void addMessage(string message, User user)
         {
-            Message m = new Message(message, user);
+            Message m = new Message(message, user, this);
             Messages.Add(m);
             notifyAll(m);
         }

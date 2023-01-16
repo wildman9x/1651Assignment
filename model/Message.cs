@@ -9,10 +9,12 @@ namespace _1651Assignment.model
     {
         public String message { get; set; }
         public User user { get; set; }
-        public DateTime time { get; set; }
+        public DateTime time { get; set; } = DateTime.Now;
 
-        public Message(String message, User user)
+        public string ChatId { get; set; }
+        public Message(String message, User user, ChatMediator chat)
         {
+            this.ChatId = chat.Id;
             this.message = message;
             this.user = user;
             time = DateTime.Now;

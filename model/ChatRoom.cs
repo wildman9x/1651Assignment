@@ -6,7 +6,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 namespace _1651Assignment.model
 {
-    public class ChatRoom : ObjectId, IDisposable
+    public class ChatRoom : ChatMediator, IDisposable
     {
         private bool disposedValue;
 
@@ -41,7 +41,7 @@ namespace _1651Assignment.model
 
         public override void addMessage(String message, User user)
         {
-            Message m = new Message(message, user);
+            Message m = new Message(message, user, this);
             Messages.Add(m);
             notifyAll(m);
         }

@@ -18,7 +18,7 @@ namespace _1651Assignment.controller
                 user.Name = name;
                 user.Phone = phone;
                 user.Password = password;
-                user.Chats = new List<ObjectId>();
+                user.Chats = new List<ChatMediator>();
                 usersList.Add(user);
             }
             else
@@ -65,7 +65,7 @@ namespace _1651Assignment.controller
         {
             try
             {
-                foreach (ObjectId chat in user.Chats)
+                foreach (ChatMediator chat in user.Chats)
                 {
                     Console.WriteLine(chat);
                 }

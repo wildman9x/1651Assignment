@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Class\\1651\\1651Assignment\\1651Assignment.csproj": {}
+    "D:\\Class\\1651\\1651Assignment\\1651App\\1651App.csproj": {}
   },
   "projects": {
-    "D:\\Class\\1651\\1651Assignment\\1651Assignment.csproj": {
+    "D:\\Class\\1651\\1651Assignment\\1651App\\1651App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Class\\1651\\1651Assignment\\1651Assignment.csproj",
-        "projectName": "1651Assignment",
-        "projectPath": "D:\\Class\\1651\\1651Assignment\\1651Assignment.csproj",
+        "projectUniqueName": "D:\\Class\\1651\\1651Assignment\\1651App\\1651App.csproj",
+        "projectName": "1651App",
+        "projectPath": "D:\\Class\\1651\\1651Assignment\\1651App\\1651App.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Class\\1651\\1651Assignment\\obj\\",
+        "outputPath": "D:\\Class\\1651\\1651Assignment\\1651App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,20 +39,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "DotNetEnv": {
-              "target": "Package",
-              "version": "[2.3.0, )"
-            },
-            "MongoDB.Driver": {
-              "target": "Package",
-              "version": "[2.18.0, )"
-            },
-            "dotenv.net": {
-              "target": "Package",
-              "version": "[3.1.2, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

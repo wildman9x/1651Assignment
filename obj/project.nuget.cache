@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ucyYwS5vEQsrAAuIUb/pJW1Qc9YXF9ZJAnCxIIQscwiauJ4iLmX5nGHguPIq/16HG9HFPNJnfUl1leKRcM5VCA==",
+  "dgSpecHash": "Jf9SeZ60DkcZ0JoUN4eOqK80NMEy2YM1lFTnvsCp/tez3ZuDg2sQsVXTeqzMMxXvzHCBDPH7QPSQlSs9CbQrMA==",
   "success": true,
   "projectFilePath": "D:\\Class\\1651\\1651Assignment\\1651Assignment.csproj",
   "expectedPackageFiles": [
@@ -93,11 +93,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.11\\microsoft.netcore.app.host.win-x64.6.0.11.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
   ],
   "logs": []
 }
