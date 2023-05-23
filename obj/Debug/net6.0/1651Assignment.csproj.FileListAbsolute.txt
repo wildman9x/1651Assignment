@@ -18,3 +18,8 @@ D:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.GeneratedMSBuildEdi
 D:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.AssemblyInfoInputs.cache
 D:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.AssemblyInfo.cs
 D:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.csproj.CoreCompileInputs.cache
+C:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.csproj.AssemblyReference.cache
+C:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.AssemblyInfoInputs.cache
+C:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.AssemblyInfo.cs
+C:\Class\1651\1651Assignment\obj\Debug\net6.0\1651Assignment.csproj.CoreCompileInputs.cache
